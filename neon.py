@@ -29,3 +29,14 @@ async def watch(_, m):
     if await is_served(m.chat.id):
         return
     await add(m.chat.id)
+
+async def add(id: int):
+    if await is_served(id):
+        return
+    return await client.insert_one({"id": id})
+
+async def is_served(id: int):
+    found = client.find_one({"id": id})
+    if found:
+        return True
+    return False
