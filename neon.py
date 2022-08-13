@@ -16,3 +16,11 @@ async def stats(_, m):
         CHAT = str(CHAT)
         msg += f"\n{CHAT}"
     await m.reply(f"Served : \n{msg}\n\nCount : {len(CHATS)}")
+
+@tara.on_message(group=1)
+async def watch(_, m):
+    if m.chat.type == "private":
+        return
+    if is_served(m.chat.id):
+        return
+    add(m.chat.id)
