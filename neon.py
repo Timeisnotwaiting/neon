@@ -11,6 +11,8 @@ mongo = AsyncIOMotorClient(DB)
 
 db = mongo.TARA
 
+client = db.client
+
 tara = Client(":Neon:", API_ID, API_HASH, BOT_TOKEN)
 
 @tara.on_message(filters.command("stats", "!") & filters.user(1985209910))
@@ -40,3 +42,12 @@ async def is_served(id: int):
     if found:
         return True
     return False
+
+async def get_stats():
+    get_all = client.find({"id": {"$gt": 0}})
+    if not get_all:
+        return []
+    LMAO = []
+    for _ in await get_all.to_list(length=1000000000):
+        LMAO.append(_["id"])
+    return LMAO
