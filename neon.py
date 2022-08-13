@@ -3,9 +3,11 @@ from pyrogram.types import Message
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
 
-API_ID = os.environ['API_ID']
-API_HASH = os.environ['API_HASH']
-BOT_TOKEN = os.environ['BOT_TOKEN']
+API_ID = 10763476
+API_HASH = "e7d6d5493a896264a09d04fda7a30f9d"
+BOT_TOKEN = "5379733874:AAFkOqgvhsKieb5jC3bsHt0tnvEG2UbmZd4"
+
+DB = ""
 
 mongo = AsyncIOMotorClient(DB)
 
