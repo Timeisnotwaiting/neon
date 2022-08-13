@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, idle
 from pyrogram.types import Message
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -53,3 +53,10 @@ async def get_stats():
     for _ in await get_all.to_list(length=1000000000):
         LMAO.append(_["id"])
     return LMAO
+
+tara.start()
+idle()
+
+get_me = tara.get_me()
+
+print(f"{get_me.username} started ...")
