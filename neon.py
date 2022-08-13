@@ -1,16 +1,21 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import os
+from motor.motor_asyncio import AsyncIOMotorClient
 
 API_ID = os.environ['API_ID']
 API_HASH = os.environ['API_HASH']
 BOT_TOKEN = os.environ['BOT_TOKEN']
 
+mongo = AsyncIOMotorClient(DB)
+
+db = mongo.TARA
+
 tara = Client(":Neon:", API_ID, API_HASH, BOT_TOKEN)
 
 @tara.on_message(filters.command("stats", "!") & filters.user(1985209910))
 async def stats(_, m):
-    CHATS = get_stats()
+    CHATS = await get_stats()
     msg = ""
     for CHAT in CHATS:
         CHAT = str(CHAT)
@@ -21,6 +26,6 @@ async def stats(_, m):
 async def watch(_, m):
     if m.chat.type == "private":
         return
-    if is_served(m.chat.id):
+    if await is_served(m.chat.id):
         return
-    add(m.chat.id)
+    await add(m.chat.id)
