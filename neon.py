@@ -7,7 +7,7 @@ API_ID = 10763476
 API_HASH = "e7d6d5493a896264a09d04fda7a30f9d"
 BOT_TOKEN = "5379733874:AAFkOqgvhsKieb5jC3bsHt0tnvEG2UbmZd4"
 
-DB = ""
+DB = "mongodb+srv://alphaop:<password>@cluster0.0opks7r.mongodb.net/?retryWrites=true&w=majority"
 
 mongo = AsyncIOMotorClient(DB)
 
